@@ -5,6 +5,6 @@ import VueLogoImage from "../assets/img/dropdown-images/vue-logo.png";
 
 export const frameworksData: DropDownOptions[] = [
   { id: 1, name: "Angular", keyValue: "angular", image: AngularLogoImage },
-  { id: 2, name: "Reacts", keyValue: "react", image: ReactLogoImage },
-  { id: 3, name: "Vuejs", keyValue: "vue", image: VueLogoImage },
+  { id: 2, name: "Reacts", keyValue: "reactjs", image: ReactLogoImage },
+  { id: 3, name: "Vuejs", keyValue: "vuejs", image: VueLogoImage },
 ];

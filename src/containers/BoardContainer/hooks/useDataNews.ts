@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { DropDownOptions } from "../../../../model/DropDown.model";
 import { NewsDataType, Hits } from "../../../model/NewsDataType";
 import { NewsAPI } from "../../../libs/api/src/lib/news";
 import { frameworksData } from "../../../data";
 export const useDataNews = () => {
-  const [framework, setFramework] = useState<string>(
+
+    const [framework, setFramework] = useState<string>(
     getFirstOption(frameworksData)
   );
   const [pageNumber, setPageNumber] = useState<number>(0);
-
   const [newsData, setNewsData] = useState<Hits[]>([]);
-
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -37,7 +36,8 @@ export const useDataNews = () => {
 const getNewsData = (data: NewsDataType): Hits[] =>
   data.hits.map((hit) => ({
     author: hit.author,
-    comment_text: hit.comment_text,
+    story_title: hit.story_title,
+    story_url: hit.story_url,
     created_at: hit.created_at,
     objectID: hit.objectID,
   }));

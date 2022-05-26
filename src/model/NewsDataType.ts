@@ -4,7 +4,7 @@ export interface NewsAPIProps {
 }
 export interface Hits {
   author: string;
-  comment_text: string;
+  comment_text?: string;
   created_at: string;
   created_at_i?: number;
   num_comments?: string | null;
@@ -13,8 +13,8 @@ export interface Hits {
   points?: number | null;
   story_id?: number;
   story_text?: string | null;
-  story_title?: string;
-  story_url?: string;
+  story_title: string;
+  story_url: string;
   title?: string | null;
   url?: string | null;
 }

@@ -8,7 +8,7 @@ export const useDataNews = () => {
     const [framework, setFramework] = useState<string>(
     getFirstOption(frameworksData)
   );
-  const [pageNumber, setPageNumber] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState<number>(2);
   const [newsData, setNewsData] = useState<Hits[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 

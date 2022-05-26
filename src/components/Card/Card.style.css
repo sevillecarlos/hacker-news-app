@@ -8,3 +8,14 @@
   border: solid 1px #979797;
   background-color: #fff;
 }
+
+.like-container {
+  width: 68px;
+  height: 90px;
+  margin: 0 0 0 16px;
+  padding: 35px 22px 33px;
+  opacity: 0.06;
+  border-radius: 6px;
+  border: solid 1px #606060;
+  background-color: #606060;
+}

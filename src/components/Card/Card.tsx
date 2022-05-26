@@ -5,12 +5,13 @@ export const Card = ({ title, content }: CardProps): JSX.Element => {
     <div className="card">
       <CardHeader header={title} />
       <CardBody body={content} />
+      <div className="like-container"></div>
     </div>
   );
 };
 
 const CardHeader = ({ header }: CardHeaderProps): JSX.Element => (
-  <span>{header}</span>
+  <h6>{header}</h6>
 );
 
 const CardBody = ({ body }: CardBodyProps): JSX.Element => <span>{body}</span>;

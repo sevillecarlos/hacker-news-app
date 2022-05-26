@@ -1,4 +1,3 @@
-import React from "react";
 import { useDataNews } from "./hooks/useDataNews";
 import { Board } from "../../components/Board/Board";
 import "./Board.style.css";

@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Hits } from "../../model/NewsDataType";
 import { DropDown } from "../../components/DropDown/DropDown";
+import { Card } from "../Card/Card";
 import { frameworksData } from "../../data";
 export const Board = ({
   framework,
@@ -17,6 +18,9 @@ export const Board = ({
         select={framework}
         setSelect={onFrameworkChange}
       />
+      {newsData.map(({ author, story_title }) => (
+        <Card title={author} content={story_title} />
+      ))}
     </div>
   );
 };

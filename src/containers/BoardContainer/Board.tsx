@@ -1,8 +1,9 @@
 import React from "react";
-import "./Board.style.css";
 import { useDataNews } from "./hooks/useDataNews";
+import { Board } from "../../components/Board/Board";
+import "./Board.style.css";
 
-const Board = () => {
+const BoardContainer = () => {
   const {
     framework,
     setFramework,
@@ -15,6 +16,14 @@ const Board = () => {
   return (
     <div>
       <NavBarBoard />
+      <Board
+        framework={framework}
+        onFrameworkChange={setFramework}
+        pageNumber={pageNumber}
+        onPageNumberChange={setPageNumber}
+        loading={isLoading}
+        newsData={newsData}
+      />
     </div>
   );
 };
@@ -29,4 +38,4 @@ const NavBarBoard = () => {
   );
 };
 
-export default Board;
+export default BoardContainer;

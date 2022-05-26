@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DropDownOptions } from "../../../../model/DropDown.model";
-
+import { NewsDataType, Hits } from "../../../model/NewsDataType";
 import { NewsAPI } from "../../../libs/api/src/lib/news";
 import { frameworksData } from "../../../data";
 export const useDataNews = () => {
@@ -9,7 +9,7 @@ export const useDataNews = () => {
   );
   const [pageNumber, setPageNumber] = useState<number>(0);
 
-  const [newsData, setNewsData] = useState([]);
+  const [newsData, setNewsData] = useState<Hits[]>([]);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -19,10 +19,10 @@ export const useDataNews = () => {
       frameworkName: framework,
       pageNumber: pageNumber,
     })
-      .then((x) => getNewsData(x))
+      .then((x) => getNewsData(x.data))
       .then(setNewsData)
       .finally(() => setIsLoading(false));
-  }, [framework]);
+  }, [framework, pageNumber]);
 
   return {
     framework,
@@ -34,9 +34,13 @@ export const useDataNews = () => {
   };
 };
 
-const getNewsData = (data: any) => {
-  return data;
-};
+const getNewsData = (data: NewsDataType): Hits[] =>
+  data.hits.map((hit) => ({
+    author: hit.author,
+    comment_text: hit.comment_text,
+    created_at: hit.created_at,
+    objectID: hit.objectID,
+  }));
 
 const getFirstOption = (option: DropDownOptions[]) => {
   const [firstOption] = option;

@@ -11,7 +11,11 @@ export const Board = ({
 }: BoardProps) => {
   return (
     <div>
-      <Tab framework={framework} onFrameworkChange={onFrameworkChange} />
+      <Tab
+        framework={framework}
+        onFrameworkChange={onFrameworkChange}
+        newsData={newsData}
+      />
     </div>
   );
 };

@@ -7,13 +7,18 @@ export const dispatch = ({
   key,
   values = undefined,
 }: dispatchProps) => {
-    console.log('################## FUNCIONA')
   const store = new Store();
-  return action === actionType.add ? store.add(key, values) : store.get(key);
+  if (action === actionType.add) {
+    store.add(key, values);
+  }
+
+  if (action === actionType.get) {
+    return store.get(key);
+  }
 };
 
 interface dispatchProps {
   action: string;
   key: string;
-  values: Hits | undefined;
+  values?: Hits;
 }

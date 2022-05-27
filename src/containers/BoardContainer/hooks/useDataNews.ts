@@ -3,14 +3,39 @@ import { DropDownOptions } from "../../../../model/DropDown.model";
 import { NewsDataType, Hits } from "../../../model/NewsDataType";
 import { NewsAPI } from "../../../libs/api/src/lib/news";
 import { frameworksData } from "../../../data";
-export const useDataNews = () => {
+import { dispatch } from "../../../store/actions";
+import { actionType } from "../../../model/Store.model";
+import { keyValuesType } from "../../../model/Store.model";
 
-    const [framework, setFramework] = useState<string>(
+export const useDataNews = () => {
+  const [framework, setFramework] = useState<string>(
     getFirstOption(frameworksData)
   );
   const [pageNumber, setPageNumber] = useState<number>(2);
   const [newsData, setNewsData] = useState<Hits[]>([]);
+  const [savedNewsData, setSavedNewsData] = useState<Hits[]>([]);
+  const [refreshSavedNew, setRefreshSavedNews] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const saveNews = (newsToSave: Hits) => {
+    dispatch({
+      action: actionType.add,
+      key: keyValuesType.savedNews,
+      values: newsToSave,
+    });
+  };
+
+  const removeSaveNews = (objectID: string) => {};
+
+  const getDataFromStore = () => {
+    const savedData = dispatch({
+      action: actionType.get,
+      key: keyValuesType.savedNews,
+    });
+
+    setRefreshSavedNews(true);
+    setSavedNewsData(JSON.parse(savedData as string));
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -23,6 +48,10 @@ export const useDataNews = () => {
       .finally(() => setIsLoading(false));
   }, [framework, pageNumber]);
 
+  useEffect(() => {
+    getDataFromStore();
+  }, []);
+
   return {
     framework,
     setFramework,
@@ -30,6 +59,9 @@ export const useDataNews = () => {
     setPageNumber,
     isLoading,
     newsData,
+    saveNews,
+    removeSaveNews,
+    savedNewsData,
   };
 };
 

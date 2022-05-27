@@ -11,7 +11,10 @@ import "./Tab.style.css";
 export const Tab = ({
   framework,
   onFrameworkChange,
+  saveNews,
+  removeSaveNews,
   newsData,
+  savedNewsData,
 }: TabsProps): JSX.Element => {
   const [activeTab, setActiveTab] = useState(TabsType.allNews);
 
@@ -29,6 +32,7 @@ export const Tab = ({
           <li
             key={tabType}
             onClick={onActiveTabChange}
+            //need to fix
             className={tabType === TabsType.allNews ? "active" : ""}
           >
             {convertKeyTabToName(tabType)}
@@ -41,7 +45,11 @@ export const Tab = ({
         setSelect={onFrameworkChange}
       />
       <div className="outlet">
-        {checkActiveTab() ? <AllNewsTab data={newsData} /> : <FavNewsTab />}
+        {checkActiveTab() ? (
+          <AllNewsTab data={newsData} saveNews={saveNews} />
+        ) : (
+          <FavNewsTab data={savedNewsData} removeSaveNews={removeSaveNews} />
+        )}
       </div>
     </div>
   );
@@ -50,5 +58,8 @@ export const Tab = ({
 interface TabsProps {
   framework: string;
   onFrameworkChange: Dispatch<SetStateAction<string>>;
+  saveNews: Dispatch<SetStateAction<any>>;
+  removeSaveNews: Dispatch<SetStateAction<any>>;
   newsData: Hits[];
+  savedNewsData: Hits[];
 }

@@ -9,7 +9,10 @@ const BoardContainer = () => {
     pageNumber,
     setPageNumber,
     isLoading,
+    saveNews,
+    removeSaveNews,
     newsData,
+    savedNewsData,
   } = useDataNews();
 
   return (
@@ -21,7 +24,10 @@ const BoardContainer = () => {
         pageNumber={pageNumber}
         onPageNumberChange={setPageNumber}
         loading={isLoading}
+        saveNews={saveNews}
+        removeSaveNews={removeSaveNews}
         newsData={newsData}
+        savedNewsData={savedNewsData}
       />
     </div>
   );

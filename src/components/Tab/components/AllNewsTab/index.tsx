@@ -1,17 +1,9 @@
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { Card } from "../../../Card/Card";
 import { Hits } from "../../../../model/NewsDataType";
-import { dispatch } from "../../../../store/actions";
-import { keyValuesType } from "../../../../model/Store.model";
-import { actionType } from "../../../../model/Store.model";
 
-export const AllNewsTab = ({ data }: AllNewsTabProps) => {
-  const saveNews = (newsToSave: Hits) => {
-    dispatch({
-      action: actionType.add,
-      key: keyValuesType.savedNews,
-      values: newsToSave,
-    });
-  };
+
+export const AllNewsTab = ({ data, saveNews }: AllNewsTabProps) => {
   return (
     <div>
       {data.map((newsData: Hits) => (
@@ -28,4 +20,5 @@ export const AllNewsTab = ({ data }: AllNewsTabProps) => {
 
 interface AllNewsTabProps {
   data: Hits[];
+  saveNews: Dispatch<SetStateAction<any>>;
 }

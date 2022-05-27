@@ -7,14 +7,20 @@ export const Board = ({
   pageNumber,
   onPageNumberChange,
   loading = false,
+  saveNews,
+  removeSaveNews,
   newsData,
+  savedNewsData,
 }: BoardProps) => {
   return (
     <div>
       <Tab
         framework={framework}
         onFrameworkChange={onFrameworkChange}
+        saveNews={saveNews}
+        removeSaveNews={removeSaveNews}
         newsData={newsData}
+        savedNewsData={savedNewsData}
       />
     </div>
   );
@@ -26,5 +32,8 @@ interface BoardProps {
   pageNumber: number;
   onPageNumberChange: Dispatch<SetStateAction<number>>;
   loading: boolean;
+  saveNews: Dispatch<SetStateAction<any>>;
+  removeSaveNews: Dispatch<SetStateAction<any>>;
   newsData: Hits[];
+  savedNewsData: Hits[];
 }

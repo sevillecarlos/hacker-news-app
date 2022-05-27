@@ -16,11 +16,15 @@ export const Tab = ({
   newsData,
   savedNewsData,
 }: TabsProps): JSX.Element => {
+
+  const ACTIVE = "active";
   const [activeTab, setActiveTab] = useState(TabsType.allNews);
 
-  const checkActiveTab = () => activeTab === TabsType.allNews;
+  const checkActiveTabAll = () => activeTab === TabsType.allNews;
+  const checkActiveTabFaves = () => activeTab === TabsType.myFaves;
 
   const onActiveTabChange = (key: TabsType) => setActiveTab(key);
+
 
   return (
     <div className="tabs">
@@ -28,7 +32,7 @@ export const Tab = ({
         <li
           key={TabsType.allNews}
           onClick={() => onActiveTabChange(TabsType.allNews)}
-          className={activeTab === TabsType.allNews ? "active" : ""}
+          className={checkActiveTabAll() ? ACTIVE : ""}
         >
           {convertKeyTabToName(TabsType.allNews)}
         </li>
@@ -36,7 +40,7 @@ export const Tab = ({
         <li
           key={TabsType.myFaves}
           onClick={() => onActiveTabChange(TabsType.myFaves)}
-          className={activeTab === TabsType.myFaves ? "active" : ""}
+          className={checkActiveTabFaves() ? ACTIVE : ""}
         >
           {convertKeyTabToName(TabsType.myFaves)}
         </li>
@@ -47,7 +51,7 @@ export const Tab = ({
         setSelect={onFrameworkChange}
       />
       <div className="outlet">
-        {checkActiveTab() ? (
+        {checkActiveTabAll() ? (
           <AllNewsTab data={newsData} saveNews={saveNews} />
         ) : (
           <FavNewsTab data={savedNewsData} removeSaveNews={removeSaveNews} />

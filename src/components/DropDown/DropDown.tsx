@@ -10,9 +10,10 @@ export const DropDown = memo<DropDownOptionsProps>(
         onChange={(e) => setSelect(e.target.value)}
         value={select}
       >
-        {options.map(({ id, name, keyValue, image }) => (
+        {" "}
+        {options.map(({ id, name, keyValue }) => (
           <option key={id} value={keyValue}>
-            <img src={image} width="100" height="50" /> <span>{name}</span>
+            {optionName(name, null)}
           </option>
         ))}
       </select>
@@ -20,6 +21,11 @@ export const DropDown = memo<DropDownOptionsProps>(
   }
 );
 
+const optionName = (name: string, icon: any) => (
+  <span>
+   <img src={AngularIcon} height={100} width={100} />
+  </span>
+);
 interface DropDownOptionsProps {
   options: DropDownOptions[];
   select: string;

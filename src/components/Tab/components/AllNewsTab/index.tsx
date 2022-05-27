@@ -1,7 +1,6 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Card } from "../../../Card/Card";
 import { Hits } from "../../../../model/NewsDataType";
-
 
 export const AllNewsTab = ({ data, saveNews }: AllNewsTabProps) => {
   return (

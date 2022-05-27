@@ -1,5 +1,6 @@
 import { useDataNews } from "./hooks/useDataNews";
 import { Board } from "../../components/Board/Board";
+import HeaderBoard from "../../assets/img/board-images/board-title.png";
 import "./Board.style.css";
 
 const BoardContainer = () => {
@@ -37,7 +38,7 @@ const NavBarBoard = () => {
   return (
     <div>
       <div className="nav-bar">
-        <span className="nav-bar-title">Hacker News</span>
+        <span className="nav-bar-title">HACKER NEWS</span>
       </div>
     </div>
   );

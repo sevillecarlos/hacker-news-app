@@ -23,6 +23,8 @@ export const useDataNews = () => {
       key: keyValuesType.savedNews,
       values: newsToSave,
     });
+
+    getDataFromStore();
   };
 
   const onFrameWorkChange = (key: string) => {
@@ -70,8 +72,8 @@ export const useDataNews = () => {
 
   useEffect(() => {
     getDataFromStore();
-    getQueryFromStore()
-  }, [framework]);
+    getQueryFromStore();
+  }, []);
 
   return {
     framework,

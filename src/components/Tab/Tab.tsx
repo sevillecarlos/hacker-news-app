@@ -20,24 +20,26 @@ export const Tab = ({
 
   const checkActiveTab = () => activeTab === TabsType.allNews;
 
-  const onActiveTabChange = () =>
-    checkActiveTab()
-      ? setActiveTab(TabsType.myFaves)
-      : setActiveTab(TabsType.allNews);
+  const onActiveTabChange = (key: TabsType) => setActiveTab(key);
 
   return (
     <div className="tabs">
       <ul className="nav">
-        {Object.values(TabsType).map((tabType: string) => (
-          <li
-            key={tabType}
-            onClick={onActiveTabChange}
-            //need to fix
-            className={tabType === TabsType.allNews ? "active" : ""}
-          >
-            {convertKeyTabToName(tabType)}
-          </li>
-        ))}
+        <li
+          key={TabsType.allNews}
+          onClick={() => onActiveTabChange(TabsType.allNews)}
+          className={activeTab === TabsType.allNews ? "active" : ""}
+        >
+          {convertKeyTabToName(TabsType.allNews)}
+        </li>
+
+        <li
+          key={TabsType.myFaves}
+          onClick={() => onActiveTabChange(TabsType.myFaves)}
+          className={activeTab === TabsType.myFaves ? "active" : ""}
+        >
+          {convertKeyTabToName(TabsType.myFaves)}
+        </li>
       </ul>
       <DropDown
         options={frameworksData}

@@ -10,9 +10,8 @@ class Store {
     const storageData = this.get(key);
     if (key === keyValuesType.savedNews) {
       if (storageData) {
-        const parseData: Hits[] = JSON.parse(storageData);
-        parseData.push(value as Hits);
-        localStorage.setItem(key, JSON.stringify(parseData));
+        storageData.push(value as Hits);
+        localStorage.setItem(key, JSON.stringify(storageData));
       } else {
         localStorage.setItem(key, JSON.stringify([value]));
       }

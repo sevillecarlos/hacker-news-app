@@ -1,11 +1,13 @@
 import "./Card.style.css";
+import LikeIcon from '../../assets/img/save-news-icons/like-news.png'
+import DislikeIcon from '../../assets/img/save-news-icons/dislike-news.png'
 
 export const Card = ({ title, content }: CardProps): JSX.Element => {
   return (
     <div className="card">
       <CardHeader header={title} />
       <CardBody body={content} />
-      <div className="like-container"></div>
+      <img src={LikeIcon} alt="save icon" className="save-icon"/>
     </div>
   );
 };

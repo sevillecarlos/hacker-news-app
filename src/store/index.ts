@@ -1,12 +1,26 @@
 import { Hits } from "../model/NewsDataType";
+import { keyValuesType } from "../model/Store.model";
 
 class Store {
-  add(key: string, value: Hits | undefined) {
-    return localStorage.setItem(key, JSON.stringify([value]));
+  get(key: string) {
+    return JSON.parse(localStorage.getItem(key) as string);
   }
 
-  get(key: string) {
-    return localStorage.getItem(key);
+  add(key: string, value: Hits | string | undefined) {
+    const storageData = this.get(key);
+    if (key === keyValuesType.savedNews) {
+      if (storageData) {
+        const parseData: Hits[] = JSON.parse(storageData);
+        parseData.push(value as Hits);
+        localStorage.setItem(key, JSON.stringify(parseData));
+      } else {
+        localStorage.setItem(key, JSON.stringify([value]));
+      }
+    }
+
+    if (key === keyValuesType.savedQuery) {
+      localStorage.setItem(key, JSON.stringify(value));
+    }
   }
 }
 

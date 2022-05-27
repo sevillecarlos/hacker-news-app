@@ -28,7 +28,7 @@ export const Board = ({
 
 interface BoardProps {
   framework: string;
-  onFrameworkChange: Dispatch<SetStateAction<string>>;
+  onFrameworkChange: Dispatch<SetStateAction<any>>;
   pageNumber: number;
   onPageNumberChange: Dispatch<SetStateAction<number>>;
   loading: boolean;

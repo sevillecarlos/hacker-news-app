@@ -20,5 +20,5 @@ export const dispatch = ({
 interface dispatchProps {
   action: string;
   key: string;
-  values?: Hits;
+  values?: Hits|string;
 }

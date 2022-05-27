@@ -3,7 +3,6 @@ import { Card } from "../../../Card/Card";
 import { Hits } from "../../../../model/NewsDataType";
 
 export const FavNewsTab = ({ data, removeSaveNews }: FavNewsTabProps) => {
-  console.log('@@@@@@@@@@@@@@@@2', data)
 
   return (
     <div>

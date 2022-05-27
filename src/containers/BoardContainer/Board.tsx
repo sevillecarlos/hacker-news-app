@@ -5,7 +5,7 @@ import "./Board.style.css";
 const BoardContainer = () => {
   const {
     framework,
-    setFramework,
+    onFrameWorkChange,
     pageNumber,
     setPageNumber,
     isLoading,
@@ -20,7 +20,7 @@ const BoardContainer = () => {
       <NavBarBoard />
       <Board
         framework={framework}
-        onFrameworkChange={setFramework}
+        onFrameworkChange={onFrameWorkChange}
         pageNumber={pageNumber}
         onPageNumberChange={setPageNumber}
         loading={isLoading}

@@ -25,6 +25,15 @@ export const useDataNews = () => {
     });
   };
 
+  const onFrameWorkChange = (key: string) => {
+    setFramework(key);
+    dispatch({
+      action: actionType.add,
+      key: keyValuesType.savedQuery,
+      values: key,
+    });
+  };
+
   const removeSaveNews = (objectID: string) => {};
 
   const getDataFromStore = () => {
@@ -32,9 +41,20 @@ export const useDataNews = () => {
       action: actionType.get,
       key: keyValuesType.savedNews,
     });
+    if (savedData) {
+      setRefreshSavedNews(true);
+      setSavedNewsData(savedData);
+    }
+  };
 
-    setRefreshSavedNews(true);
-    setSavedNewsData(JSON.parse(savedData as string));
+  const getQueryFromStore = () => {
+    const savedQuery = dispatch({
+      action: actionType.get,
+      key: keyValuesType.savedQuery,
+    });
+    if (savedQuery) {
+      setFramework(savedQuery);
+    }
   };
 
   useEffect(() => {
@@ -50,11 +70,12 @@ export const useDataNews = () => {
 
   useEffect(() => {
     getDataFromStore();
-  }, []);
+    getQueryFromStore()
+  }, [framework]);
 
   return {
     framework,
-    setFramework,
+    onFrameWorkChange,
     pageNumber,
     setPageNumber,
     isLoading,

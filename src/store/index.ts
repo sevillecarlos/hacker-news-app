@@ -1,4 +1,5 @@
 import { Hits } from "../model/NewsDataType";
+import { DropDownOptions } from "../../model/DropDown.model";
 import { keyValuesType } from "../model/Store.model";
 
 class Store {
@@ -6,7 +7,7 @@ class Store {
     return JSON.parse(localStorage.getItem(key) as string);
   }
 
-  add(key: string, value: Hits | string | undefined) {
+  add(key: string, value?: Hits | DropDownOptions | string) {
     const storageData = this.get(key);
     if (key === keyValuesType.savedNews) {
       if (storageData) {

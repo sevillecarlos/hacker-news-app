@@ -3,6 +3,7 @@ import { DropDown } from "../../components/DropDown/DropDown";
 import { AllNewsTab } from "./components/AllNewsTab";
 import { FavNewsTab } from "./components/FavNewsTab";
 import { TabsType } from "./Tab.model";
+import { DropDownOptions } from "../../../model/DropDown.model";
 import { Hits } from "../../model/NewsDataType";
 import { convertKeyTabToName } from "../../helpers/TabsHelper";
 import { frameworksData } from "../../data";
@@ -62,8 +63,8 @@ export const Tab = ({
 };
 
 interface TabsProps {
-  framework: string;
-  onFrameworkChange: Dispatch<SetStateAction<string>>;
+  framework: DropDownOptions;
+  onFrameworkChange: Dispatch<SetStateAction<DropDownOptions>>;
   saveNews: Dispatch<SetStateAction<any>>;
   removeSaveNews: Dispatch<SetStateAction<any>>;
   newsData: Hits[];

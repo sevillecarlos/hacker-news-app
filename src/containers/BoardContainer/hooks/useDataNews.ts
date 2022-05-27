@@ -8,13 +8,12 @@ import { actionType } from "../../../model/Store.model";
 import { keyValuesType } from "../../../model/Store.model";
 
 export const useDataNews = () => {
-  const [framework, setFramework] = useState<string>(
+  const [framework, setFramework] = useState<DropDownOptions>(
     getFirstOption(frameworksData)
   );
   const [pageNumber, setPageNumber] = useState<number>(2);
   const [newsData, setNewsData] = useState<Hits[]>([]);
   const [savedNewsData, setSavedNewsData] = useState<Hits[]>([]);
-  const [refreshSavedNew, setRefreshSavedNews] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const saveNews = (newsToSave: Hits) => {
@@ -27,12 +26,12 @@ export const useDataNews = () => {
     getDataFromStore();
   };
 
-  const onFrameWorkChange = (key: string) => {
-    setFramework(key);
+  const onFrameWorkChange = (frameworkSelect: DropDownOptions) => {
+    setFramework(frameworkSelect);
     dispatch({
       action: actionType.add,
       key: keyValuesType.savedQuery,
-      values: key,
+      values: frameworkSelect,
     });
   };
 
@@ -44,7 +43,6 @@ export const useDataNews = () => {
       key: keyValuesType.savedNews,
     });
     if (savedData) {
-      setRefreshSavedNews(true);
       setSavedNewsData(savedData);
     }
   };
@@ -62,7 +60,7 @@ export const useDataNews = () => {
   useEffect(() => {
     setIsLoading(true);
     NewsAPI.getNews({
-      frameworkName: framework,
+      frameworkName: framework.keyValue,
       pageNumber: pageNumber,
     })
       .then((x) => getNewsData(x.data))
@@ -99,5 +97,5 @@ const getNewsData = (data: NewsDataType): Hits[] =>
 
 const getFirstOption = (option: DropDownOptions[]) => {
   const [firstOption] = option;
-  return firstOption.keyValue;
+  return firstOption;
 };

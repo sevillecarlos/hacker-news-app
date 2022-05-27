@@ -1,6 +1,7 @@
 import Store from ".";
 import { Hits } from "../model/NewsDataType";
 import { actionType } from "../model/Store.model";
+import { DropDownOptions } from "../../model/DropDown.model";
 
 export const dispatch = ({
   action,
@@ -20,5 +21,5 @@ export const dispatch = ({
 interface dispatchProps {
   action: string;
   key: string;
-  values?: Hits|string;
+  values?: Hits | DropDownOptions | string;
 }

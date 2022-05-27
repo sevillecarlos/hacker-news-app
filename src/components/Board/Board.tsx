@@ -1,6 +1,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Hits } from "../../model/NewsDataType";
 import { Tab } from "../Tab/Tab";
+import { DropDownOptions } from "../../../model/DropDown.model";
+
 export const Board = ({
   framework,
   onFrameworkChange,
@@ -27,7 +29,7 @@ export const Board = ({
 };
 
 interface BoardProps {
-  framework: string;
+  framework: DropDownOptions;
   onFrameworkChange: Dispatch<SetStateAction<any>>;
   pageNumber: number;
   onPageNumberChange: Dispatch<SetStateAction<number>>;

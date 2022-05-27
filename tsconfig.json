@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "src/model/NewsDataType.ts", "model/store.model.ts"  ]
 }

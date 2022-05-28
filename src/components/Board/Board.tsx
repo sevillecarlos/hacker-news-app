@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Hits } from "../../model/NewsDataType";
 import { Tab } from "../Tab/Tab";
+import { Pagination } from "../Pagination/Pagination";
 import { DropDownOptions } from "../../../model/DropDown.model";
 
 export const Board = ({
@@ -24,6 +25,7 @@ export const Board = ({
         newsData={newsData}
         savedNewsData={savedNewsData}
       />
+      <Pagination onPageNumberChange={onPageNumberChange} pageNumber={pageNumber}/>
     </div>
   );
 };

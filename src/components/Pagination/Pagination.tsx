@@ -38,7 +38,7 @@ export const Pagination = ({
 
 
   return (
-    <div>
+    <div className="pagination">
       <button onClick={prevPage}>
         <MdOutlineArrowBackIosNew />
       </button>

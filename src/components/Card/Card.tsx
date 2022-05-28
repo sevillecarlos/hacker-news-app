@@ -1,11 +1,15 @@
 import { Dispatch, SetStateAction } from "react";
 import LikeIcon from "../../assets/img/save-news-icons/like-news.png";
 import DislikeIcon from "../../assets/img/save-news-icons/dislike-news.png";
+import { AiOutlineClockCircle } from "react-icons/ai";
+import { dateToHourConverter } from "../../helpers/DateToHourConverter";
+import "../Style/grid.css";
 import "./Card.style.css";
 
 export const Card = ({
   key,
   title,
+  createdAt,
   content,
   url,
   setAction,
@@ -13,23 +17,31 @@ export const Card = ({
 }: CardProps): JSX.Element => {
   return (
     <div className="card" key={key}>
-      <a href={url} target="_blank" className="link-card">
-        <CardHeader header={title} />
-        <CardBody body={content} />
-      </a>
+      <div className="row">
+        <a href={url} target="_blank" className="link-card">
+          <CardHeader header={title} createdTime={createdAt} />
+          <CardBody body={content} />
+        </a>
+      </div>
+
       <CardIcon setAction={setAction} action={action} />
     </div>
   );
 };
 
-const CardHeader = ({ header }: CardHeaderProps): JSX.Element => (
-  <h6>{header}</h6>
+const CardHeader = ({ header, createdTime }: CardHeaderProps): JSX.Element => (
+  <h6 className="card-header">
+    <AiOutlineClockCircle /> {dateToHourConverter(createdTime)} hours ago by{" "}
+    {header}
+  </h6>
 );
 
-const CardBody = ({ body }: CardBodyProps): JSX.Element => <span>{body}</span>;
+const CardBody = ({ body }: CardBodyProps): JSX.Element => (
+  <span className="card-body">{body}</span>
+);
 
 const CardIcon = ({ action, setAction }: CardIconProps): JSX.Element => (
-  <div onClick={setAction}>
+  <div onClick={setAction} className='icon-container'>
     <img
       src={action ? LikeIcon : DislikeIcon}
       alt="save icon"
@@ -41,6 +53,7 @@ const CardIcon = ({ action, setAction }: CardIconProps): JSX.Element => (
 export interface CardProps {
   key: string;
   title: string;
+  createdAt: string;
   content: string;
   url: string;
   action: boolean;
@@ -48,6 +61,7 @@ export interface CardProps {
 }
 interface CardHeaderProps {
   header: string;
+  createdTime: string;
 }
 
 interface CardBodyProps {

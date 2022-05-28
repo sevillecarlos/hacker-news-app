@@ -10,6 +10,7 @@ export const AllNewsTab = ({ data, saveData, saveNews }: AllNewsTabProps) => {
           key={newsData.objectID}
           title={newsData.author}
           content={newsData.story_title}
+          url={newsData.story_url}
           setAction={() => saveNews(newsData)}
           action={saveData.some((s) => s.objectID === newsData.objectID)}
         />

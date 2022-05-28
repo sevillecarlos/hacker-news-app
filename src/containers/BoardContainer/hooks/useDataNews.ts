@@ -35,7 +35,6 @@ export const useDataNews = () => {
     });
   };
 
-  
   const removeSaveNews = (objectID: string) => {};
 
   const getDataFromStore = () => {
@@ -88,13 +87,17 @@ export const useDataNews = () => {
 };
 
 const getNewsData = (data: NewsDataType): Hits[] =>
-  data.hits.map((hit) => ({
-    author: hit.author,
-    story_title: hit.story_title,
-    story_url: hit.story_url,
-    created_at: hit.created_at,
-    objectID: hit.objectID,
-  }));
+  data.hits
+    .map((hit) => ({
+      author: hit.author,
+      story_title: hit.story_title,
+      story_url: hit.story_url,
+      created_at: hit.created_at,
+      objectID: hit.objectID,
+    }))
+    .filter(
+      (d: Hits) => d.author && d.story_title && d.story_url && d.created_at
+    );
 
 const getFirstOption = (option: DropDownOptions[]) => {
   const [firstOption] = option;

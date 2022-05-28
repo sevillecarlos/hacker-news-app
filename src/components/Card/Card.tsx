@@ -2,19 +2,21 @@ import { Dispatch, SetStateAction } from "react";
 import LikeIcon from "../../assets/img/save-news-icons/like-news.png";
 import DislikeIcon from "../../assets/img/save-news-icons/dislike-news.png";
 import "./Card.style.css";
-import { Hits } from "../../model/NewsDataType";
 
 export const Card = ({
   key,
   title,
   content,
+  url,
   setAction,
   action,
 }: CardProps): JSX.Element => {
   return (
     <div className="card" key={key}>
-      <CardHeader header={title} />
-      <CardBody body={content} />
+      <a href={url} target="_blank" className="link-card">
+        <CardHeader header={title} />
+        <CardBody body={content} />
+      </a>
       <CardIcon setAction={setAction} action={action} />
     </div>
   );
@@ -40,6 +42,7 @@ export interface CardProps {
   key: string;
   title: string;
   content: string;
+  url: string;
   action: boolean;
   setAction: Dispatch<SetStateAction<any>>;
 }

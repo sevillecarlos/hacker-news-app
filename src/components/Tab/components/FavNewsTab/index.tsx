@@ -10,6 +10,7 @@ export const FavNewsTab = ({ data, news, removeSaveNews }: FavNewsTabProps) => {
           key={newsData.objectID}
           title={newsData.author}
           content={newsData.story_title}
+          url={newsData.story_url}
           setAction={() => removeSaveNews(newsData)}
           action={news.some((s) => s.objectID === newsData.objectID)}
         />

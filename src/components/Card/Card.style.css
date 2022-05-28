@@ -7,6 +7,14 @@
   border-radius: 6px;
   border: solid 1px #979797;
   background-color: #fff;
+  cursor: pointer;
+}
+.card:hover{
+  opacity: 0.5;
+}
+.link-card{
+  text-decoration:none;
+  color: black;
 }
 
 .like-container {

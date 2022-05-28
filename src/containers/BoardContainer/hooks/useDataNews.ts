@@ -35,10 +35,6 @@ export const useDataNews = () => {
     });
   };
 
-
-
-
-
   const removeSaveNews = (objectID: string) => {};
 
   const getDataFromStore = () => {

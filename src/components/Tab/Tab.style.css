@@ -6,7 +6,7 @@
 }
 
 ul.nav {
-  width: 20%;
+  width: 25%;
   margin: auto;
   align-items: center;
   border-radius: 2px;
@@ -17,7 +17,7 @@ ul.nav {
   }
 }
 ul.nav li {
-  width: 98px;
+  width: 100%;
   height: 31px;
   padding: 3px 39px 0 40px;
   list-style: none;
@@ -28,10 +28,10 @@ ul.nav li {
   border: solid 1px #d6d6d6;
   cursor: pointer;
   transition: all 0.5s;
+  font-size: 0.8vw;
   width: 19px;
   height: 28px;
   font-family: Roboto;
-  font-size: 16px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;

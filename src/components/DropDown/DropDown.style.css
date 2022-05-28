@@ -41,8 +41,8 @@
   margin-bottom: 0px;
   margin-left: auto;
   width:90%;
-  position: relative; /* <-- Added */
-  z-index: 1; /* <-- Added */
+  position: relative; 
+  z-index: 1;
 }
 
 .dropdown-items div {

@@ -13,19 +13,16 @@ export const Pagination = ({
   const [fadePageNumber, setFadePageNumber] = useState(1);
 
   const prevPage = () => {
-    if (pageNumber !== 1) {
+
+    const checkPaginationLimit = pageNumber !== 1
+    if (checkPaginationLimit) {
       onPageNumberChange(pageNumber - 1);
     }
 
-    if(pageNumber === fadePageNumber && pageNumber !== 1){
+    if (pageNumber === fadePageNumber && checkPaginationLimit) {
       setCountPage(countPage - 1);
       setFadePageNumber(fadePageNumber - 1);
     }
-    console.log('@@@@@@@@ ', pageNumber)
-
-    console.log('@@@@@@@@ ', fadePageNumber)
-
-
   };
 
   const nextPage = () => {
@@ -40,7 +37,6 @@ export const Pagination = ({
     Array.apply(null, Array(countPage - fadePageNumber + 1)).map(
       (_, n) => n + fadePageNumber
     );
-
 
   return (
     <div className="pagination">

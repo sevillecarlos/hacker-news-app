@@ -4,13 +4,14 @@ import { Hits } from "../../../../model/NewsDataType";
 import "../../../Style/grid.css";
 
 export const AllNewsTab = ({ data, saveData, saveNews }: AllNewsTabProps) => {
+
   return (
     <div className="row">
       <div>
         {data.map((newsData: Hits) => (
           <div className="column">
             <Card
-              key={newsData.objectID}
+              keyValue={newsData.objectID}
               title={newsData.author}
               createdAt={newsData.created_at}
               content={newsData.story_title}

@@ -7,7 +7,7 @@ import "../Style/grid.css";
 import "./Card.style.css";
 
 export const Card = ({
-  key,
+  keyValue,
   title,
   createdAt,
   content,
@@ -16,9 +16,9 @@ export const Card = ({
   action,
 }: CardProps): JSX.Element => {
   return (
-    <div className="card" key={key}>
+    <div className="card" key={keyValue}>
       <div className="row">
-        <a href={url} target="_blank" className="link-card">
+        <a href={url} target="_blank" rel="noreferrer" className="link-card">
           <CardHeader header={title} createdTime={createdAt} />
           <CardBody body={content} />
         </a>
@@ -51,7 +51,7 @@ const CardIcon = ({ action, setAction }: CardIconProps): JSX.Element => (
 );
 
 export interface CardProps {
-  key: string;
+  keyValue: string;
   title: string;
   createdAt: string;
   content: string;

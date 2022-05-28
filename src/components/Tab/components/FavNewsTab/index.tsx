@@ -10,7 +10,7 @@ export const FavNewsTab = ({ data, news, removeSaveNews }: FavNewsTabProps) => {
         {data?.map((newsData: Hits) => (
           <div className="column">
             <Card
-              key={newsData.objectID}
+              keyValue={newsData.objectID}
               title={newsData.author}
               createdAt={newsData.created_at}
               content={newsData.story_title}

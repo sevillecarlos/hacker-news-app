@@ -16,7 +16,7 @@ const BoardContainer = () => {
   } = useDataNews();
 
   return (
-    <div>
+    <div className="board-container">
       <NavBarBoard />
       <Board
         framework={framework}

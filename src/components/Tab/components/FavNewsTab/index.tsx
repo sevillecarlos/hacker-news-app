@@ -1,9 +1,8 @@
-import React, { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Card } from "../../../Card/Card";
 import { Hits } from "../../../../model/NewsDataType";
 
-export const FavNewsTab = ({ data, removeSaveNews }: FavNewsTabProps) => {
-
+export const FavNewsTab = ({ data, news, removeSaveNews }: FavNewsTabProps) => {
   return (
     <div>
       {data?.map((newsData: Hits) => (
@@ -12,6 +11,7 @@ export const FavNewsTab = ({ data, removeSaveNews }: FavNewsTabProps) => {
           title={newsData.author}
           content={newsData.story_title}
           setAction={() => removeSaveNews(newsData)}
+          action={news.some((s) => s.objectID === newsData.objectID)}
         />
       ))}
     </div>
@@ -20,5 +20,6 @@ export const FavNewsTab = ({ data, removeSaveNews }: FavNewsTabProps) => {
 
 interface FavNewsTabProps {
   data: Hits[];
+  news: Hits[];
   removeSaveNews: Dispatch<SetStateAction<any>>;
 }

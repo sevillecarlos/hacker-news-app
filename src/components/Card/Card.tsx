@@ -9,14 +9,13 @@ export const Card = ({
   title,
   content,
   setAction,
+  action,
 }: CardProps): JSX.Element => {
   return (
     <div className="card" key={key}>
       <CardHeader header={title} />
       <CardBody body={content} />
-      <div onClick={setAction}>
-        <img src={LikeIcon} alt="save icon" className="save-icon" />
-      </div>
+      <CardIcon setAction={setAction} action={action} />
     </div>
   );
 };
@@ -27,10 +26,21 @@ const CardHeader = ({ header }: CardHeaderProps): JSX.Element => (
 
 const CardBody = ({ body }: CardBodyProps): JSX.Element => <span>{body}</span>;
 
+const CardIcon = ({ action, setAction }: CardIconProps): JSX.Element => (
+  <div onClick={setAction}>
+    <img
+      src={action ? LikeIcon : DislikeIcon}
+      alt="save icon"
+      className="save-icon"
+    />
+  </div>
+);
+
 export interface CardProps {
   key: string;
   title: string;
   content: string;
+  action: boolean;
   setAction: Dispatch<SetStateAction<any>>;
 }
 interface CardHeaderProps {
@@ -39,4 +49,9 @@ interface CardHeaderProps {
 
 interface CardBodyProps {
   body: string;
+}
+
+interface CardIconProps {
+  action: any;
+  setAction: any;
 }

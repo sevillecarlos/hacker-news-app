@@ -17,7 +17,6 @@ export const Tab = ({
   newsData,
   savedNewsData,
 }: TabsProps): JSX.Element => {
-
   const ACTIVE = "active";
   const [activeTab, setActiveTab] = useState(TabsType.allNews);
 
@@ -25,7 +24,6 @@ export const Tab = ({
   const checkActiveTabFaves = () => activeTab === TabsType.myFaves;
 
   const onActiveTabChange = (key: TabsType) => setActiveTab(key);
-
 
   return (
     <div className="tabs">
@@ -53,9 +51,17 @@ export const Tab = ({
       />
       <div className="select-tab">
         {checkActiveTabAll() ? (
-          <AllNewsTab data={newsData} saveNews={saveNews} />
+          <AllNewsTab
+            data={newsData}
+            saveData={savedNewsData}
+            saveNews={saveNews}
+          />
         ) : (
-          <FavNewsTab data={savedNewsData} removeSaveNews={removeSaveNews} />
+          <FavNewsTab
+            data={savedNewsData}
+            news={savedNewsData}
+            removeSaveNews={removeSaveNews}
+          />
         )}
       </div>
     </div>

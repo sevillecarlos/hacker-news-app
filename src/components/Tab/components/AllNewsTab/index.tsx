@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Card } from "../../../Card/Card";
 import { Hits } from "../../../../model/NewsDataType";
 
-export const AllNewsTab = ({ data, saveNews }: AllNewsTabProps) => {
+export const AllNewsTab = ({ data, saveData, saveNews }: AllNewsTabProps) => {
   return (
     <div>
       {data.map((newsData: Hits) => (
@@ -11,6 +11,7 @@ export const AllNewsTab = ({ data, saveNews }: AllNewsTabProps) => {
           title={newsData.author}
           content={newsData.story_title}
           setAction={() => saveNews(newsData)}
+          action={saveData.some((s) => s.objectID === newsData.objectID)}
         />
       ))}
     </div>
@@ -19,5 +20,6 @@ export const AllNewsTab = ({ data, saveNews }: AllNewsTabProps) => {
 
 interface AllNewsTabProps {
   data: Hits[];
+  saveData: Hits[];
   saveNews: Dispatch<SetStateAction<any>>;
 }

@@ -17,10 +17,15 @@ export const Pagination = ({
       onPageNumberChange(pageNumber - 1);
     }
 
-    if (pageNumber >= 9) {
-      setFadePageNumber(fadePageNumber - 1);
+    if(pageNumber === fadePageNumber && pageNumber !== 1){
       setCountPage(countPage - 1);
+      setFadePageNumber(fadePageNumber - 1);
     }
+    console.log('@@@@@@@@ ', pageNumber)
+
+    console.log('@@@@@@@@ ', fadePageNumber)
+
+
   };
 
   const nextPage = () => {

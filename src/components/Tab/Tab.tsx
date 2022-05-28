@@ -51,7 +51,7 @@ export const Tab = ({
         select={framework}
         setSelect={onFrameworkChange}
       />
-      <div className="outlet">
+      <div className="select-tab">
         {checkActiveTabAll() ? (
           <AllNewsTab data={newsData} saveNews={saveNews} />
         ) : (

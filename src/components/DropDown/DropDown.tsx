@@ -1,42 +1,54 @@
-import React, { memo, Dispatch, SetStateAction } from "react";
+import React, { memo, Dispatch, SetStateAction, useState } from "react";
 import { DropDownOptions } from "../../../model/DropDown.model";
-import { actionDropDown } from "./DropDownAction";
 import { RiArrowDownSLine } from "react-icons/ri";
 import "./DropDown.style.css";
 
 export const DropDown = memo<DropDownOptionsProps>(
   ({ options, select, setSelect }) => {
+    const [showItems, setShowItems] = useState<boolean>(false);
+
+    const toggleShowOptions = () => {
+      setShowItems((prevState: boolean) => !prevState);
+    };
+
+    const onSelectChange = (selection: DropDownOptions) => {
+      setSelect(selection);
+      setShowItems(false);
+    };
 
     return (
-      <div
-        className="dropdown"
-        onChange={(e: any) => setSelect(e.target.value)}
-      >
-        <button onClick={actionDropDown} className="drop-button">
-          {optionName(select.name, select.icon)}
-          <div className="down-arrow">
-            <RiArrowDownSLine />
+      <div className="dropdown-box">
+        <div className="dropdown-container">
+          <div className="dropdown-selected-item">
+            {optionName(select.name, select.icon)}
           </div>
-        </button>{" "}
-        {options.map((option) => (
+          <RiArrowDownSLine
+            className="dropdown-arrow"
+            onClick={toggleShowOptions}
+          />
           <div
-            onClick={() => setSelect(option)}
-            id="drop-content-select"
-            className="dropdown-content"
-            key={option.id}
+            style={{ display: showItems ? "block" : "none" }}
+            className="dropdown-items"
           >
-            {optionName(option.name, option.icon)}
+            {options.map((option) => (
+              <div
+                key={option.id}
+                onClick={() => onSelectChange(option)}
+              >
+                {optionName(option.name, option.icon)}
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     );
   }
 );
 
 const optionName = (name: string, icon: any) => (
-  <span>
+  <a>
     <img src={icon} alt={name} className="icon-image" /> {name}
-  </span>
+  </a>
 );
 
 interface DropDownOptionsProps {

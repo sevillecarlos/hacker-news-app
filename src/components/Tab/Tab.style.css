@@ -49,3 +49,7 @@ ul.nav li:hover {
 ul.nav li.active {
   color: #39a2db;
 }
+
+.select-tab{
+  margin-top: 150px;
+}

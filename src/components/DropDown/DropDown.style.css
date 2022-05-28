@@ -4,7 +4,7 @@
 
 .dropdown-box {
   position: absolute;
-  width: 240px;
+  width: 200px;
   height: 32px;
   margin: 63px 114px 1px 150px;
   padding: 5px 12px 5px 12px;
@@ -30,9 +30,19 @@
 }
 
 .dropdown-items  {
-  width: 240px;
+  width: 300px;
   box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
   background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
+  -webkit-padding-start: 0px;
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  width:90%;
+  position: relative; /* <-- Added */
+  z-index: 1; /* <-- Added */
 }
 
 .dropdown-items div {

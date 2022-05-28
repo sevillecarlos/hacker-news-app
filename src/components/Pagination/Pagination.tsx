@@ -36,7 +36,6 @@ export const Pagination = ({
       (_, n) => n + fadePageNumber
     );
 
-  console.log("@@@@@@@@@@@@@@@", paginationPagesDefault());
 
   return (
     <div>

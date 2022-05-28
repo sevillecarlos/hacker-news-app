@@ -1,6 +1,5 @@
 import { useDataNews } from "./hooks/useDataNews";
 import { Board } from "../../components/Board/Board";
-import HeaderBoard from "../../assets/img/board-images/board-title.png";
 import "./Board.style.css";
 
 const BoardContainer = () => {

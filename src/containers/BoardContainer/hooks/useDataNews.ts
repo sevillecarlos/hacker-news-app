@@ -11,7 +11,7 @@ export const useDataNews = () => {
   const [framework, setFramework] = useState<DropDownOptions>(
     getFirstOption(frameworksData)
   );
-  const [pageNumber, setPageNumber] = useState<number>(2);
+  const [pageNumber, setPageNumber] = useState<number>(1);
   const [newsData, setNewsData] = useState<Hits[]>([]);
   const [savedNewsData, setSavedNewsData] = useState<Hits[]>([]);
   const [isLoading, setIsLoading] = useState(false);
